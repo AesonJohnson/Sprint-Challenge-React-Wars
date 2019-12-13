@@ -22,7 +22,6 @@ const Bold = styled.p`
   display:inline-block;
   margin:0px;
   font-weight:bold;
-
 `
 
 
