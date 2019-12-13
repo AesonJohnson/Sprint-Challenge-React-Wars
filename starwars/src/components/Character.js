@@ -1,12 +1,33 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+import styled from "styled-components";
+import Character from "./Character";
 
-const Character = props => {
+function CharacterCard() {
+    const [character, setCharacter] = useState([]);
+
+    useEffect(() => {
+      axios.get("https://swapi.co/api/people/1/")
+        .then(response => {
+          //console.log(response);
+          const data = response.data.results;
+          setCharacter(data);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }, []);
+
     return(
-        <div className="character">
-            <h1>Name: {props.name}</h1>
-            <h2>Birth_Year: {props.birth_year}</h2>
+        <div className="charactercard">
+            {character.map((card, index) =>
+                <CharacterCard 
+                key={index}
+                name={card.name}
+                birth_year={card.birth_year}/>
+            )}
         </div>
-    );
+    )
 }
 
-export default Character;
+export default CharacterCard;
