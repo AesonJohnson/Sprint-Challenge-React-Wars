@@ -7,11 +7,9 @@ function CharacterCard() {
     const [character, setCharacter] = useState([]);
 
     useEffect(() => {
-      axios.get("https://swapi.co/api/people/1/")
+      axios.get("https://swapi.co/api/people/1/?format=api")
         .then(response => {
-          //console.log(response);
-          const data = response.data.results;
-          setCharacter(data);
+          setCharacter(response.data)
         })
         .catch(error => {
           console.log(error);
@@ -20,12 +18,12 @@ function CharacterCard() {
 
     return(
         <div className="charactercard">
-            {character.map((card, index) =>
-                <CharacterCard 
+            {character.map((card, index) => {
+                <Character 
                 key={index}
                 name={card.name}
                 birth_year={card.birth_year}/>
-            )}
+            )}}
         </div>
     )
 }

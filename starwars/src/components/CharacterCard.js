@@ -1,6 +1,6 @@
 import React from "react";
 
-const Character = props => {
+function Character(props) {
     return(
         <div className="character">
             <h1>Name: {props.name}</h1>
