@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Character from "./Character";
 import axios from "axios";
-import styled from "styled-components";
-
 
 function CharacterCard() {
     const [character, setCharacter] = useState([]);
@@ -10,7 +8,7 @@ function CharacterCard() {
     useEffect(() => {
       axios.get("https://swapi.co/api/people")
         .then(response => {
-          setCharacter(response.data)
+          setCharacter(response.data.results)
         })
         .catch(error => {
           console.log(error);
@@ -24,6 +22,7 @@ function CharacterCard() {
                 <Character
                 key={index}
                 name={card.name}
+                gender={card.gender}
                 birth_year={card.birth_year}
                 />) 
             })}
