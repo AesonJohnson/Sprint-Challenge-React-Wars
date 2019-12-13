@@ -19,8 +19,12 @@ function CharacterCard(){
 
     return(
         <div className="charactercard">
-            <CharacterCard 
-            />
+            {character.map((card, index) =>
+                <CharacterCard 
+                key={index}
+                name={card.name}
+                birth_year={card.birth_year}/>
+            )}
         </div>
     )
 }

@@ -1,9 +1,10 @@
 import React from "react";
 
-function Character(props) {
+const Character = props => {
     return(
         <div className="character">
-
+            <h1>Name: {props.name}</h1>
+            <h2>Birth_Year: {props.birth_year}</h2>
         </div>
     );
 }
